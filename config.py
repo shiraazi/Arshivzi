@@ -1,11 +1,7 @@
 # config.py
-# =======================
-# خواندن تنظیمات از GitHub Secrets یا متغیر محیطی
-# =======================
-
 import os
 
-# توکن ربات
+# توکن ربات از GitHub Secrets یا محیط
 TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
 
 # کانال مقصد آرشیو
