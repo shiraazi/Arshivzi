@@ -1,9 +1,6 @@
 # bot.py
-# =======================
-# فایل اصلی ربات و مدیریت وب‌هوک
-# با استفاده از توکن و کانال از محیط
-# =======================
 
+import os
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
 import config
@@ -51,10 +48,12 @@ if __name__ == "__main__":
     # شروع Scheduler
     start_scheduler()
 
-    # وب‌هوک
-    WEBHOOK_URL = os.environ.get("WEBHOOK_URL") or "https://your-render-service.com/" + config.TOKEN
+    # اجرای وب‌هوک
+    WEBHOOK_URL = os.environ.get("WEBHOOK_URL") or f"https://your-render-service.com/{config.TOKEN}"
+    PORT = int(os.environ.get("PORT", 8443))
+
     app.run_webhook(
         listen="0.0.0.0",
-        port=int(os.environ.get("PORT", 8443)),
+        port=PORT,
         webhook_url=WEBHOOK_URL
     )
